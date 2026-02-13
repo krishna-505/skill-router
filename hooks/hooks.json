@@ -1,0 +1,13 @@
+{
+  "hooks": [
+    {
+      "event": "UserPromptSubmit",
+      "commands": [
+        {
+          "type": "command",
+          "command": "python ${CLAUDE_PLUGIN_ROOT}/scripts/router.py"
+        }
+      ]
+    }
+  ]
+}

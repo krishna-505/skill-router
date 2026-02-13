@@ -1,0 +1,7 @@
+{
+  "name": "skill-router",
+  "version": "1.0.0",
+  "description": "Automatically routes user prompts to the most relevant skill from a cloud registry. Zero-config, zero-latency skill discovery.",
+  "author": "skill-router",
+  "homepage": "https://github.com/skill-router/skill-router"
+}

@@ -1,0 +1,2059 @@
+{
+  "metrics": {
+    "plan_a": {
+      "precision": 98.0,
+      "recall": 100.0,
+      "f1": 99.0,
+      "confusion_rate": 13.3,
+      "invisible_miss_rate": 0,
+      "coverage": 100,
+      "avg_token_cost": 487,
+      "tp": 49,
+      "fp": 1,
+      "fn": 0,
+      "tn": 20,
+      "confusion": {
+        "correct": 6,
+        "alt": 2,
+        "wrong": 2,
+        "none": 5
+      },
+      "latency_p50": 13.6
+    },
+    "plan_b": {
+      "precision": 91.7,
+      "recall": 22.4,
+      "f1": 36.1,
+      "confusion_rate": 6.7,
+      "invisible_miss_rate": 73.8,
+      "coverage": 25,
+      "avg_token_cost": 2753,
+      "tp": 11,
+      "fp": 1,
+      "fn": 38,
+      "tn": 20,
+      "confusion": {
+        "correct": 0,
+        "alt": 0,
+        "wrong": 1,
+        "none": 14
+      },
+      "invisible_misses": 59
+    },
+    "summary": {
+      "total_cases": 100,
+      "positive": 50,
+      "negative": 20,
+      "confusion": 15,
+      "boundary": 15
+    },
+    "win_counts": {
+      "a_wins": 56,
+      "b_wins": 0,
+      "both_ok": 31,
+      "both_fail": 13
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "type": "positive",
+      "prompt": "Help me do a code review of this pull request",
+      "expected": "code-review",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "code-review",
+        "score": 61.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Direct keyword match"
+    },
+    {
+      "id": 2,
+      "type": "positive",
+      "prompt": "I need to debug this function, it returns wrong results",
+      "expected": "debugging",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "debugging",
+        "score": 46.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "Direct keyword + intent"
+    },
+    {
+      "id": 3,
+      "type": "positive",
+      "prompt": "Refactor this class to reduce complexity",
+      "expected": "refactoring",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "refactoring",
+        "score": 56.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "Direct keyword"
+    },
+    {
+      "id": 4,
+      "type": "positive",
+      "prompt": "Let's implement this feature using TDD, write the failing test first",
+      "expected": "tdd",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "tdd",
+        "score": 39.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "TDD vs unit-testing confusion cluster"
+    },
+    {
+      "id": 5,
+      "type": "positive",
+      "prompt": "Write unit tests for the UserService class",
+      "expected": "unit-testing",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "unit-testing",
+        "score": 57.7,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "snapshot-testing",
+        "score": 18.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "unit-testing vs tdd confusion cluster"
+    },
+    {
+      "id": 6,
+      "type": "positive",
+      "prompt": "Create an accessible navigation menu with proper ARIA labels",
+      "expected": "accessibility",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "accessibility",
+        "score": 32.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Hard-to-trigger: a11y via ARIA"
+    },
+    {
+      "id": 7,
+      "type": "positive",
+      "prompt": "Build a React component for a user profile card",
+      "expected": "react",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "react",
+        "score": 63.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "react",
+        "score": 71.2,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "react vs nextjs confusion"
+    },
+    {
+      "id": 8,
+      "type": "positive",
+      "prompt": "Design a REST API for a blog platform",
+      "expected": "rest-api",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "rest-api",
+        "score": 47.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "api-design",
+        "score": 20.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "rest-api vs api-design confusion"
+    },
+    {
+      "id": 9,
+      "type": "positive",
+      "prompt": "Implement JWT authentication with refresh tokens",
+      "expected": "authentication",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "authentication",
+        "score": 69.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "auth vs auth-hardening confusion"
+    },
+    {
+      "id": 10,
+      "type": "positive",
+      "prompt": "Design the database schema for an e-commerce app",
+      "expected": "database-design",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "database-design",
+        "score": 63.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "database-design",
+        "score": 30.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "db-design vs data-modeling confusion"
+    },
+    {
+      "id": 11,
+      "type": "positive",
+      "prompt": "Write a Dockerfile for my Node.js application",
+      "expected": "docker",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "docker",
+        "score": 55.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "docker",
+        "score": 58.6,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "docker vs kubernetes confusion"
+    },
+    {
+      "id": 12,
+      "type": "positive",
+      "prompt": "Set up a CI/CD pipeline for automated testing and deployment",
+      "expected": "ci-cd",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "ci-cd",
+        "score": 75.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "ci-cd",
+        "score": 61.1,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "ci-cd vs github-actions confusion"
+    },
+    {
+      "id": 13,
+      "type": "positive",
+      "prompt": "Do a security audit of this codebase for vulnerabilities",
+      "expected": "code-audit",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "code-audit",
+        "score": 54.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "code-audit vs code-review confusion"
+    },
+    {
+      "id": 14,
+      "type": "positive",
+      "prompt": "Add form validation with Zod schemas",
+      "expected": "input-validation",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "input-validation",
+        "score": 57.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "api-testing",
+        "score": 16.7,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "input-validation vs xss confusion"
+    },
+    {
+      "id": 15,
+      "type": "positive",
+      "prompt": "Write API documentation with OpenAPI spec",
+      "expected": "api-docs",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "api-docs",
+        "score": 71.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "api-docs",
+        "score": 40.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "api-docs vs readme confusion"
+    },
+    {
+      "id": 16,
+      "type": "positive",
+      "prompt": "Create an Architecture Decision Record for choosing PostgreSQL",
+      "expected": "adr",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "adr",
+        "score": 60.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Hard-to-trigger: ADR is obscure term"
+    },
+    {
+      "id": 17,
+      "type": "positive",
+      "prompt": "Help me write effective prompts for my ChatGPT application",
+      "expected": "prompt-engineering",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "prompt-engineering",
+        "score": 35.6,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "prompt-eng vs rag confusion"
+    },
+    {
+      "id": 18,
+      "type": "positive",
+      "prompt": "Optimize this slow SQL query that takes 30 seconds",
+      "expected": "sql-optimization",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "sql-optimization",
+        "score": 65.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "sql-opt vs db-design confusion"
+    },
+    {
+      "id": 19,
+      "type": "positive",
+      "prompt": "Create a flexbox layout with a sidebar and main content area",
+      "expected": "css-layout",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "css-layout",
+        "score": 55.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "css-layout",
+        "score": 18.2,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "css-layout vs tailwind confusion"
+    },
+    {
+      "id": 20,
+      "type": "positive",
+      "prompt": "Write end-to-end tests for the checkout flow",
+      "expected": "e2e-testing",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "e2e-testing",
+        "score": 50.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "snapshot-testing",
+        "score": 18.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "e2e vs integration vs playwright"
+    },
+    {
+      "id": 21,
+      "type": "positive",
+      "prompt": "帮我审查一下这段代码的质量",
+      "expected": "code-review",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "code-review",
+        "score": 24.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: code review"
+    },
+    {
+      "id": 22,
+      "type": "positive",
+      "prompt": "这个函数报错了，帮我调试一下",
+      "expected": "debugging",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "debugging",
+        "score": 46.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "Chinese: debugging"
+    },
+    {
+      "id": 23,
+      "type": "positive",
+      "prompt": "用TDD方式来实现这个功能",
+      "expected": "tdd",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "tdd",
+        "score": 53.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: TDD"
+    },
+    {
+      "id": 24,
+      "type": "positive",
+      "prompt": "给UserService类写单元测试",
+      "expected": "unit-testing",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "unit-testing",
+        "score": 47.2,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: unit testing"
+    },
+    {
+      "id": 25,
+      "type": "positive",
+      "prompt": "写一个React用户列表组件",
+      "expected": "react",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "react",
+        "score": 54.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "react",
+        "score": 52.5,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Chinese: React"
+    },
+    {
+      "id": 26,
+      "type": "positive",
+      "prompt": "设计一个电商系统的数据库表结构",
+      "expected": "database-design",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "database-design",
+        "score": 46.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "Chinese: database design"
+    },
+    {
+      "id": 27,
+      "type": "positive",
+      "prompt": "帮我做一下代码安全审计",
+      "expected": "code-audit",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "code-audit",
+        "score": 47.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: security audit"
+    },
+    {
+      "id": 28,
+      "type": "positive",
+      "prompt": "这个SQL查询太慢了，帮我优化",
+      "expected": "sql-optimization",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "sql-optimization",
+        "score": 32.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: SQL optimization"
+    },
+    {
+      "id": 29,
+      "type": "positive",
+      "prompt": "帮我写prompt提示词模板",
+      "expected": "prompt-engineering",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "prompt-engineering",
+        "score": 52.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: prompt engineering"
+    },
+    {
+      "id": 30,
+      "type": "positive",
+      "prompt": "添加无障碍功能，支持屏幕阅读器",
+      "expected": "accessibility",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "accessibility",
+        "score": 52.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: accessibility hard-to-trigger"
+    },
+    {
+      "id": 31,
+      "type": "positive",
+      "prompt": "Add proper error handling with try-catch blocks to this module",
+      "expected": "error-handling",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "error-handling",
+        "score": 63.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "error-handling vs debugging confusion"
+    },
+    {
+      "id": 32,
+      "type": "positive",
+      "prompt": "Set up structured logging with Winston in my Express app",
+      "expected": "logging",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "logging",
+        "score": 66.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "logging",
+        "score": 84.4,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "logging vs monitoring confusion"
+    },
+    {
+      "id": 33,
+      "type": "positive",
+      "prompt": "Profile and optimize the performance of this image processing function",
+      "expected": "performance-opt",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "performance-opt",
+        "score": 54.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "performance vs sql-optimization"
+    },
+    {
+      "id": 34,
+      "type": "positive",
+      "prompt": "Which design pattern should I use for this notification system?",
+      "expected": "design-patterns",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "design-patterns",
+        "score": 48.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "design-patterns vs clean-code"
+    },
+    {
+      "id": 35,
+      "type": "positive",
+      "prompt": "Create a Next.js app with App Router and server components",
+      "expected": "nextjs",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "nextjs",
+        "score": 71.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "vue",
+        "score": 27.8,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "nextjs vs react confusion"
+    },
+    {
+      "id": 36,
+      "type": "positive",
+      "prompt": "Build a Vue 3 component using Composition API",
+      "expected": "vue",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "vue",
+        "score": 69.2,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "vue",
+        "score": 84.4,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "vue vs react vs svelte"
+    },
+    {
+      "id": 37,
+      "type": "positive",
+      "prompt": "Style this card component with Tailwind CSS classes",
+      "expected": "tailwind",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "tailwind",
+        "score": 68.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "component-library",
+        "score": 16.7,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "tailwind vs css-layout"
+    },
+    {
+      "id": 38,
+      "type": "positive",
+      "prompt": "Build a GraphQL API with resolvers and mutations",
+      "expected": "graphql",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "graphql",
+        "score": 72.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "graphql",
+        "score": 90.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "graphql vs rest-api"
+    },
+    {
+      "id": 39,
+      "type": "positive",
+      "prompt": "Implement Redis caching for our API responses",
+      "expected": "caching",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "caching",
+        "score": 52.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "caching vs performance-opt"
+    },
+    {
+      "id": 40,
+      "type": "positive",
+      "prompt": "Deploy to Kubernetes with a Helm chart",
+      "expected": "kubernetes",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "kubernetes",
+        "score": 57.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "kubernetes",
+        "score": 70.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "k8s vs docker"
+    },
+    {
+      "id": 41,
+      "type": "positive",
+      "prompt": "Write a GitHub Actions workflow for running tests on every PR",
+      "expected": "github-actions",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "github-actions",
+        "score": 66.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "snapshot-testing",
+        "score": 18.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "github-actions vs ci-cd confusion"
+    },
+    {
+      "id": 42,
+      "type": "positive",
+      "prompt": "Implement CSRF protection with anti-csrf tokens",
+      "expected": "csrf-protection",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "csrf-protection",
+        "score": 69.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "encryption",
+        "score": 22.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "csrf vs cors vs xss confusion"
+    },
+    {
+      "id": 43,
+      "type": "positive",
+      "prompt": "Prevent XSS attacks by sanitizing user input in our templates",
+      "expected": "xss-prevention",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "xss-prevention",
+        "score": 59.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "xss vs input-validation"
+    },
+    {
+      "id": 44,
+      "type": "positive",
+      "prompt": "Write a project README with installation and usage instructions",
+      "expected": "readme-generator",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "readme-generator",
+        "score": 65.7,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "readme vs technical-writing"
+    },
+    {
+      "id": 45,
+      "type": "positive",
+      "prompt": "Build a RAG pipeline with document chunking and vector search",
+      "expected": "rag-pipeline",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "rag-pipeline",
+        "score": 78.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "component-library",
+        "score": 16.7,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "rag vs embedding vs prompt-eng"
+    },
+    {
+      "id": 46,
+      "type": "positive",
+      "prompt": "Create a Playwright test for the login flow",
+      "expected": "playwright",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "playwright",
+        "score": 60.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "test-fixtures",
+        "score": 22.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "playwright vs e2e-testing"
+    },
+    {
+      "id": 47,
+      "type": "positive",
+      "prompt": "Set up mock functions for the database service in tests",
+      "expected": "mocking",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "mocking",
+        "score": 55.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "logging",
+        "score": 22.2,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "mocking vs test-fixtures"
+    },
+    {
+      "id": 48,
+      "type": "positive",
+      "prompt": "Write a Terraform module for AWS VPC configuration",
+      "expected": "terraform",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "terraform",
+        "score": 62.9,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "terraform vs cloud-config"
+    },
+    {
+      "id": 49,
+      "type": "positive",
+      "prompt": "Add 2FA and multi-factor authentication to harden our login",
+      "expected": "auth-hardening",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "authentication",
+        "score": 61.4,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "auth-hardening vs authentication"
+    },
+    {
+      "id": 50,
+      "type": "positive",
+      "prompt": "Create a data visualization dashboard with charts and graphs",
+      "expected": "data-visualization",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "data-visualization",
+        "score": 37.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "test-fixtures",
+        "score": 22.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "viz vs analytics"
+    },
+    {
+      "id": 51,
+      "type": "negative",
+      "prompt": "What time is it?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Irrelevant question"
+    },
+    {
+      "id": 52,
+      "type": "negative",
+      "prompt": "Hello, how are you?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Casual greeting"
+    },
+    {
+      "id": 53,
+      "type": "negative",
+      "prompt": "Tell me a joke about programmers",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Entertainment request"
+    },
+    {
+      "id": 54,
+      "type": "negative",
+      "prompt": "What is the capital of France?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "General knowledge"
+    },
+    {
+      "id": 55,
+      "type": "negative",
+      "prompt": "Summarize this article for me",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "General summarization"
+    },
+    {
+      "id": 56,
+      "type": "negative",
+      "prompt": "Translate this to Japanese",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Translation request"
+    },
+    {
+      "id": 57,
+      "type": "negative",
+      "prompt": "Write me a poem about coding",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Creative writing"
+    },
+    {
+      "id": 58,
+      "type": "negative",
+      "prompt": "What does this error mean?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Too vague, could be anything"
+    },
+    {
+      "id": 59,
+      "type": "negative",
+      "prompt": "yes",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Ultra-short confirmation"
+    },
+    {
+      "id": 60,
+      "type": "negative",
+      "prompt": "ok",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Ultra-short confirmation"
+    },
+    {
+      "id": 61,
+      "type": "negative",
+      "prompt": "Can you explain this code to me?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Code explanation, not a skill"
+    },
+    {
+      "id": 62,
+      "type": "negative",
+      "prompt": "How does JavaScript hoisting work?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Conceptual question"
+    },
+    {
+      "id": 63,
+      "type": "negative",
+      "prompt": "Compare Python and JavaScript for web development",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Comparison question"
+    },
+    {
+      "id": 64,
+      "type": "negative",
+      "prompt": "What are the pros and cons of TypeScript?",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Opinion question"
+    },
+    {
+      "id": 65,
+      "type": "negative",
+      "prompt": "你好",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Chinese greeting"
+    },
+    {
+      "id": 66,
+      "type": "negative",
+      "prompt": "帮我算一下1+1等于几",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Chinese: math question"
+    },
+    {
+      "id": 67,
+      "type": "negative",
+      "prompt": "给我讲个笑话",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Chinese: joke request"
+    },
+    {
+      "id": 68,
+      "type": "negative",
+      "prompt": "这段代码是什么意思",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Chinese: code explanation"
+    },
+    {
+      "id": 69,
+      "type": "negative",
+      "prompt": "Fix the typo on line 42",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Simple fix, no skill needed"
+    },
+    {
+      "id": 70,
+      "type": "negative",
+      "prompt": "Rename this variable from x to count",
+      "expected": null,
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": true,
+        "invisible": false
+      },
+      "status": "BOTH OK",
+      "notes": "Trivial rename"
+    },
+    {
+      "id": 71,
+      "type": "confusion",
+      "prompt": "Review this code for security issues",
+      "expected": "code-audit",
+      "expected_alt": "code-review",
+      "plan_a": {
+        "matched": "code-review",
+        "score": 55.1,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "code-audit vs code-review: 'security' tips it to audit"
+    },
+    {
+      "id": 72,
+      "type": "confusion",
+      "prompt": "Write tests for this function",
+      "expected": "unit-testing",
+      "expected_alt": "tdd",
+      "plan_a": {
+        "matched": "unit-testing",
+        "score": 22.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "snapshot-testing",
+        "score": 18.2,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "unit-testing vs tdd: no TDD methodology implied"
+    },
+    {
+      "id": 73,
+      "type": "confusion",
+      "prompt": "Improve this code",
+      "expected": "refactoring",
+      "expected_alt": "clean-code",
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "BOTH FAIL",
+      "notes": "refactoring vs clean-code: ambiguous intent"
+    },
+    {
+      "id": 74,
+      "type": "confusion",
+      "prompt": "Make this work on mobile devices",
+      "expected": "responsive-design",
+      "expected_alt": "css-layout",
+      "plan_a": {
+        "matched": "responsive-design",
+        "score": 25.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "responsive vs css-layout: 'mobile' tips to responsive"
+    },
+    {
+      "id": 75,
+      "type": "confusion",
+      "prompt": "Add caching to speed up the API",
+      "expected": "caching",
+      "expected_alt": "performance-opt",
+      "plan_a": {
+        "matched": "caching",
+        "score": 47.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "caching vs performance: 'caching' keyword tips it"
+    },
+    {
+      "id": 76,
+      "type": "confusion",
+      "prompt": "Write documentation for this project",
+      "expected": "readme-generator",
+      "expected_alt": "technical-writing",
+      "plan_a": {
+        "matched": "technical-writing",
+        "score": 49.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": "api-docs",
+        "score": 20.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "readme vs technical-writing: ambiguous"
+    },
+    {
+      "id": 77,
+      "type": "confusion",
+      "prompt": "Set up automated deployments",
+      "expected": "ci-cd",
+      "expected_alt": "deployment-strategies",
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": "logging",
+        "score": 22.2,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "BOTH FAIL",
+      "notes": "ci-cd vs deployment: 'automated' tips to ci-cd"
+    },
+    {
+      "id": 78,
+      "type": "confusion",
+      "prompt": "Deploy my app with containers",
+      "expected": "docker",
+      "expected_alt": "kubernetes",
+      "plan_a": {
+        "matched": "docker",
+        "score": 21.4,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "docker vs k8s: 'containers' without orchestration"
+    },
+    {
+      "id": 79,
+      "type": "confusion",
+      "prompt": "Store API keys securely",
+      "expected": "secrets-mgmt",
+      "expected_alt": "encryption",
+      "plan_a": {
+        "matched": "secrets-mgmt",
+        "score": 46.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "secrets vs encryption: 'API keys' tips to secrets"
+    },
+    {
+      "id": 80,
+      "type": "confusion",
+      "prompt": "Build an AI chatbot",
+      "expected": "agent-design",
+      "expected_alt": "prompt-engineering",
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "agent vs prompt: 'chatbot' is ambiguous"
+    },
+    {
+      "id": 81,
+      "type": "confusion",
+      "prompt": "Secure this form against attacks",
+      "expected": "input-validation",
+      "expected_alt": "csrf-protection",
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "input-val vs csrf vs xss: 'form' is ambiguous"
+    },
+    {
+      "id": 82,
+      "type": "confusion",
+      "prompt": "Handle database queries better",
+      "expected": "sql-optimization",
+      "expected_alt": "orm-patterns",
+      "plan_a": {
+        "matched": "embedding",
+        "score": 24.5,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": "database-design",
+        "score": 15.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "sql-opt vs orm: depends on context"
+    },
+    {
+      "id": 83,
+      "type": "confusion",
+      "prompt": "Write release documentation",
+      "expected": "release-notes",
+      "expected_alt": "changelog",
+      "plan_a": {
+        "matched": "technical-writing",
+        "score": 25.0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": "api-docs",
+        "score": 20.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "release-notes vs changelog: ambiguous"
+    },
+    {
+      "id": 84,
+      "type": "confusion",
+      "prompt": "记录为什么选择这个技术方案",
+      "expected": "adr",
+      "expected_alt": "technical-writing",
+      "plan_a": {
+        "matched": "adr",
+        "score": 24.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Chinese: ADR vs technical-writing"
+    },
+    {
+      "id": 85,
+      "type": "confusion",
+      "prompt": "测试整个用户注册流程",
+      "expected": "e2e-testing",
+      "expected_alt": "integration-testing",
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "Chinese: e2e vs integration"
+    },
+    {
+      "id": 86,
+      "type": "boundary",
+      "prompt": "a11y",
+      "expected": "accessibility",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "accessibility",
+        "score": 21.6,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Ultra-short abbreviation hard-to-trigger"
+    },
+    {
+      "id": 87,
+      "type": "boundary",
+      "prompt": "k8s deploy",
+      "expected": "kubernetes",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "kubernetes",
+        "score": 47.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "Abbreviation only"
+    },
+    {
+      "id": 88,
+      "type": "boundary",
+      "prompt": "Make the button work on Safari too",
+      "expected": "browser-compat",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "browser-compat",
+        "score": 25.3,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Indirect reference, hard-to-trigger"
+    },
+    {
+      "id": 89,
+      "type": "boundary",
+      "prompt": "The screen reader can't read this dropdown",
+      "expected": "accessibility",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "accessibility",
+        "score": 20.7,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "No keyword 'accessibility' used"
+    },
+    {
+      "id": 90,
+      "type": "boundary",
+      "prompt": "How should I structure my git commits?",
+      "expected": "commit-messages",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "Indirect reference to commit conventions"
+    },
+    {
+      "id": 91,
+      "type": "boundary",
+      "prompt": "What's the best way to store passwords?",
+      "expected": "authentication",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "embedding",
+        "score": 24.5,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "Boundary: could be encryption or auth"
+    },
+    {
+      "id": 92,
+      "type": "boundary",
+      "prompt": "My page looks broken on small screens",
+      "expected": "responsive-design",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "debugging",
+        "score": 20.0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "No keyword 'responsive' used"
+    },
+    {
+      "id": 93,
+      "type": "boundary",
+      "prompt": "Use conventional commits format",
+      "expected": "commit-messages",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "commit-messages",
+        "score": 47.8,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Hard-to-trigger: 'conventional commits' is specific jargon"
+    },
+    {
+      "id": 94,
+      "type": "boundary",
+      "prompt": "toMatchSnapshot keeps failing",
+      "expected": "snapshot-testing",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "snapshot-testing",
+        "score": 47.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": false
+      },
+      "status": "A WINS",
+      "notes": "API-specific keyword, hard-to-trigger"
+    },
+    {
+      "id": 95,
+      "type": "boundary",
+      "prompt": "429 Too Many Requests error from my API",
+      "expected": "rate-limiting",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "rate-limiting",
+        "score": 20.7,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Status code hint, hard-to-trigger"
+    },
+    {
+      "id": 96,
+      "type": "boundary",
+      "prompt": "怎么让网站支持键盘导航",
+      "expected": "accessibility",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "Chinese: keyboard nav = accessibility"
+    },
+    {
+      "id": 97,
+      "type": "boundary",
+      "prompt": "Build a realtime chat feature",
+      "expected": "websocket",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "websocket",
+        "score": 44.5,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "No keyword 'websocket' but 'realtime chat' implies it"
+    },
+    {
+      "id": 98,
+      "type": "boundary",
+      "prompt": "How to properly describe my PR changes",
+      "expected": "pr-description",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "pr-description",
+        "score": 47.0,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "Indirect PR description reference"
+    },
+    {
+      "id": 99,
+      "type": "boundary",
+      "prompt": "Implement red-green-refactor cycle for this feature",
+      "expected": "tdd",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": "tdd",
+        "score": 30.2,
+        "correct": true
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "A WINS",
+      "notes": "TDD jargon without saying 'TDD'"
+    },
+    {
+      "id": 100,
+      "type": "boundary",
+      "prompt": "构建一个向量搜索系统",
+      "expected": "embedding",
+      "expected_alt": null,
+      "plan_a": {
+        "matched": null,
+        "score": 0,
+        "correct": false
+      },
+      "plan_b": {
+        "matched": null,
+        "score": 0.0,
+        "correct": false,
+        "invisible": true
+      },
+      "status": "BOTH FAIL",
+      "notes": "Chinese: vector search = embedding"
+    }
+  ]
+}
